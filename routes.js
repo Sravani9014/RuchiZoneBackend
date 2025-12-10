@@ -62,30 +62,64 @@ import { authMiddleware } from "./authMiddleware.js";
 
 const router = express.Router();
 
+// // --- PUBLIC ROUTES ---
+// router.post("/register", saveUserDetails);
+// router.post("/login", loginDetails);
+// router.get("/veg", getAllVegItems);
+// router.get("/nonveg", getAllNonVegItems);
+// router.post("/drinks", savedrinkItems);
+// router.get("/getdrinks", getAlldrinkItems);
+// // --- PROTECTED ROUTES ---
+// router.use(authMiddleware);
+
+// router.get("/getAll", getAllProducts);
+// router.get("/getproductById/:id", getProductById);
+// router.post("/save", createProductController);
+// router.post("/saveall", saveProduct);
+// router.delete("/delete/:id", deleteProductById);
+// router.put("/update/:id", updateProduct);
+// router.patch("/update/:id", updateProductPatch);
+
+// router.post("/saveveg", saveVegItems);
+// //router.post("/drinks", savedrinkItems);
+
+
+// router.post("/savenonveg", saveNonVegItems);
+// router.get("/nonveg", getAllNonVegItems);
+
+// router.post("/orders", saveOrders);
+// router.get("/allorders", getAllOrders);
+// router.get("/allorders/user/:userId", getOrdersByUserController);
+
+
+
+
 // --- PUBLIC ROUTES ---
 router.post("/register", saveUserDetails);
 router.post("/login", loginDetails);
+
 router.get("/veg", getAllVegItems);
 router.get("/nonveg", getAllNonVegItems);
+
 router.post("/drinks", savedrinkItems);
 router.get("/getdrinks", getAlldrinkItems);
+
 // --- PROTECTED ROUTES ---
 router.use(authMiddleware);
 
 router.get("/getAll", getAllProducts);
 router.get("/getproductById/:id", getProductById);
+
 router.post("/save", createProductController);
 router.post("/saveall", saveProduct);
+
 router.delete("/delete/:id", deleteProductById);
+
 router.put("/update/:id", updateProduct);
 router.patch("/update/:id", updateProductPatch);
 
 router.post("/saveveg", saveVegItems);
-//router.post("/drinks", savedrinkItems);
-
-
 router.post("/savenonveg", saveNonVegItems);
-router.get("/nonveg", getAllNonVegItems);
 
 router.post("/orders", saveOrders);
 router.get("/allorders", getAllOrders);
