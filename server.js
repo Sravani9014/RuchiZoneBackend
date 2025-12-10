@@ -101,7 +101,6 @@ import express from "express";
 import { router } from "./routes.js";
 import mongoose from "mongoose";
 import cors from "cors";
-import redis from "./redis.js";
 import dotenv from "dotenv";
 
 dotenv.config(); // LOAD .env
@@ -116,10 +115,20 @@ app.use("/api/v1/products",router)
 
 
 //const MONGO_URL="mongodb+srv://sravanimamillapalli532_db_user:5rOE3R9RF1IoSRiP@cluster0.2vjuy6g.mongodb.net/?appName=Cluster0";
-mongoose.connect(process.env.MONGO_URL)
-    .then(() => console.log("✅ MongoDB Connected Successfully"))
-    .catch((err) => console.log("❌ MongoDB Connection Error:", err));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log("✅ MongoDB Connected Successfully");
+  } catch (err) {
+    console.error("❌ MongoDB Connection Error:", err);
+  }
+};
 
-    app.listen(process.env.PORT, () => {
-  console.log("server is running on http://localhost:3000");
-});
+const startServer = () => {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+};
+
+connectDB().then(() => startServer());
